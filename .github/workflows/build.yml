@@ -30,13 +30,14 @@ jobs:
       - name: Generate Gradle Wrapper if missing
         run: |
           if [ ! -f gradlew ] || [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
-            cat > /tmp/wrapper-only.gradle <<'EOF'
-          tasks.register('wrapper', Wrapper) {
-              gradleVersion = '8.1.1'
-              distributionType = Wrapper.DistributionType.BIN
-          }
-          EOF
-            gradle -p "$GITHUB_WORKSPACE" -b /tmp/wrapper-only.gradle wrapper
+            mkdir -p /tmp/wrapper-project
+            printf "rootProject.name = 'wrapper-bootstrap'\n" > /tmp/wrapper-project/settings.gradle
+            printf "// temporary wrapper bootstrap project\n" > /tmp/wrapper-project/build.gradle
+            gradle -p /tmp/wrapper-project wrapper --gradle-version 8.1.1
+            cp /tmp/wrapper-project/gradlew "$GITHUB_WORKSPACE/gradlew"
+            cp /tmp/wrapper-project/gradlew.bat "$GITHUB_WORKSPACE/gradlew.bat"
+            mkdir -p "$GITHUB_WORKSPACE/gradle/wrapper"
+            cp /tmp/wrapper-project/gradle/wrapper/* "$GITHUB_WORKSPACE/gradle/wrapper/"
           fi
       - name: Commit Gradle Wrapper
         run: |
