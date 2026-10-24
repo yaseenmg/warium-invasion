@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="warium_invasion"
+version="${mod_version}"
+displayName="Warium: Machine Uprising"
+authors="Yaseen"
+description='''Warium's machines fight back: rare roaming robots, air raids and full-scale invasion waves hunt the player, plus more frequent Warium structures. Requires Warium (crusty_chunks).'''
+
+[[dependencies.warium_invasion]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.warium_invasion]]
+modId="crusty_chunks"
+mandatory=true
+versionRange="[1.3.5,)"
+ordering="AFTER"
+side="BOTH"
