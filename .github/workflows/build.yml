@@ -30,7 +30,13 @@ jobs:
       - name: Generate Gradle Wrapper if missing
         run: |
           if [ ! -f gradlew ] || [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
-            gradle wrapper --gradle-version 8.1.1
+            cat > /tmp/wrapper-only.gradle <<'EOF'
+          tasks.register('wrapper', Wrapper) {
+              gradleVersion = '8.1.1'
+              distributionType = Wrapper.DistributionType.BIN
+          }
+          EOF
+            gradle -b /tmp/wrapper-only.gradle wrapper
           fi
       - name: Commit Gradle Wrapper
         run: |
