@@ -1,0 +1,4 @@
+{
+  "structures": [{ "structure": "crusty_chunks:sea_base", "weight": 1 }],
+  "placement": { "type": "minecraft:random_spread", "spacing": 28, "separation": 8, "salt": 195413887 }
+}
