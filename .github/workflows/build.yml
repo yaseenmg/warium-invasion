@@ -36,7 +36,7 @@ jobs:
               distributionType = Wrapper.DistributionType.BIN
           }
           EOF
-            gradle -b /tmp/wrapper-only.gradle wrapper
+            gradle -p "$GITHUB_WORKSPACE" -b /tmp/wrapper-only.gradle wrapper
           fi
       - name: Commit Gradle Wrapper
         run: |
