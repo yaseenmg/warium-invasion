@@ -7,7 +7,7 @@ modId="warium_invasion"
 version="${mod_version}"
 displayName="Warium: Machine Uprising"
 authors="Yaseen"
-description='''Warium's machines fight back: rare roaming robots, air raids and full-scale invasion waves hunt the player, plus more frequent Warium structures. Requires Warium (crusty_chunks).'''
+description='''Warium's machines fight back: rare roaming robots, periodic air raids and full-scale invasion waves hunt the player, plus more frequent Warium structures. Requires Warium (crusty_chunks).'''
 
 [[dependencies.warium_invasion]]
 modId="minecraft"
